@@ -9,7 +9,14 @@ SimpleEdit also supports classic full form editing (known as editAll mode).
 
 ##Requirements
 
-jQuery 1.6
+- jQuery 1.6
+
+##Demo Requirements
+
+- A web server running PHP5.2+
+- jQuery 1.6+ (included)
+- jQueryUI 1.8.18 + theme (included)
+- jQuery Validation Engine + language file (included)
 
 ##Getting Started
 

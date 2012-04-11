@@ -1,0 +1,49 @@
+/*
+ * SimpleEdit 1.04, jQuery plugin
+ *
+ * Copyright© 2012, Adam Radabaugh
+ *
+ * Simple editing of values on basic HTML forms.
+ * Licensed under the MIT License
+ */
+div.simple-edit-container {overflow: hidden; padding: 5px 0px;}
+span.simple-edit-placeholder {color: #CCC; font-style: italic;}
+.simple-edit-container input[type=text],
+.simple-edit-container input[type=password],
+.simple-edit-container textarea,
+.simple-edit-container span.se-field-container {float:left;}
+.simple-edit-container input[type=text],
+.simple-edit-container input[type=password],
+.simple-edit-container textarea {width: 80%;}
+.simple-edit-container span.se-field-container {padding: 0px;}
+.simple-edit-container span.se-field-container select {margin: 0px 12px 0px 3px;}
+.simple-edit-container span.se-field-container input[type=checkbox] {margin: 0px 12px 0px 0;}
+.simple-edit-container span.se-field-container input[type=radio] {margin: 0px 7px 0px 0;}
+.simple-edit-single {background-color: #EDEDED; border: 2px solid #666666; border-radius: 10px 10px 10px 10px; box-shadow: 0 0 5px #888888; font-size: 0; margin: 0; padding: 3px 6px; position: relative;}
+.simple-edit-mass {display: inline-block; font-size: 0; margin: 0; position: relative; width: 153px;}
+.simple-edit-single {float: left; top: -2px;}
+.simple-edit-arrow-border {border-color: transparent #666666 transparent transparent; border-style: solid; border-width: 10px; height: 0; width: 0; position: absolute; bottom: 4px; left: -20px;}
+.simple-edit-arrow {border-color: transparent #EDEDED transparent transparent;border-style: solid; border-width: 10px; height: 0; width: 0; position: absolute; bottom: 4px; left: -17px;}
+span.simple-edit-save,
+span.simple-edit-cancel,
+span.simple-edit-msave,
+span.simple-edit-mcancel {display: inline-block; cursor: pointer; margin: 0; padding: 1px 2px;}
+span.simple-edit-msave,
+span.simple-edit-mcancel {font-size: 14px !important;}
+span.simple-edit-save:active,
+span.simple-edit-cancel:active,
+span.simple-edit-msave:active,
+span.simple-edit-mcancel:active {-moz-box-shadow: inset 0 0 5px #333333; -webkit-box-shadow: inset 0 0 5px #333333; box-shadow: inset 0 0 5px #333333;}
+div.simple-edit-loader {background: url(images/ajax-loader-dark.gif) no-repeat scroll 5px 5px transparent;display: none;height: 11px;padding: 5px;width: 16px;}
+span.simple-edit-save,
+span.simple-edit-cancel {font-size: 0;}
+span.simple-edit-save,
+span.simple-edit-msave {background: no-repeat top center #78B056; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#B2D988', endColorstr='#78B056'); background: -webkit-gradient(linear, left top, left bottom, from(#B2D988), to(#78B056)) no-repeat top center #78B056; background: -moz-linear-gradient(50% 50% -90deg, #B2D988, #78B056 10%) no-repeat top center #78B056; border: 1px solid #6D9453; border-top-left-radius: 5px; border-bottom-left-radius: 5px;}
+span.simple-edit-cancel,
+span.simple-edit-mcancel {background: no-repeat top center #A5534C; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#D69B8A', endColorstr='#A5534C'); background: -webkit-gradient(linear, left top, left bottom, from(#D69B8A), to(#A5534C)) no-repeat top center #A5534C; background: -moz-linear-gradient(50% 50% -90deg, #D69B8A, #A5534C 10%) no-repeat top center #A5534C; border: 1px solid #8D5550; border-top-right-radius: 5px; border-bottom-right-radius: 5px;}
+span.simple-edit-msave>p, span.simple-edit-mcancel>p {float: left; font-family: sans-serif; font-size:15px; margin: 0; padding: 0 6px;}
+span.simple-edit-msave>p {color:#435B33;}
+span.simple-edit-mcancel>p {color:#5B3734;}
+span.simple-edit-msave>.ui-icon {border-left: 1px solid #6D9453; float: left;}
+span.simple-edit-mcancel>.ui-icon {border-left: 1px solid #8D5550; float: left;}
+.editable {padding-right: 20px; background: transparent url(../images/pencil.png) no-repeat top right;}

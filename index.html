@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery Simple Edit Demo</title>
+		<link href="css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet">
+		<link href="css/validationEngine.jquery.css" rel="stylesheet">
+		<link href="css/jquery.simpleEdit.css" rel="stylesheet">
+		<style>
+			body { color: #222; font: 14px sans-serif; }
+			label { display: block; margin: 8px 0; }
+			span.editable { left: 15px; position: relative; }
+			span.req { color: #CC0000; font-size: 16px; font-weight: bold; }
+			#controls { padding: 5px; }
+			#edit-all { margin: 10px 0; }
+			#form-container { border: 2px solid #222; padding: 15px; width: 90%; }
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+		<script src="js/jquery.validationEngine.js"></script>
+		<script src="js/languages/jquery.validationEngine-en.js"></script>
+		<script src="js/jquery.simpleEdit.js"></script>
+	</head>
+	<body>
+		<h1>jQuery Simple Edit Demo</h1>
+		<h3>User Account Form</h3>
+		<div id="form-container">
+			<label>Username<span class="req">*</span></label>
+			<span class="editable" data-se-validation="validation[required,custom[onlyLetterNumber]]" data-se-type="text" data-se-name="user-name">
+			
+			</span>
+			<label>Phone<span class="req">*</span></label>
+			<span class="editable" data-se-validation="validation[required,custom[phone]]" data-se-type="text" data-se-name="user-phone">
+			
+			</span>
+			<label>Biography (always returns false to demo DOM update prevention)</label>
+			<span class="editable" data-se-type="textarea" data-se-name="user-bio">
+			
+			</span>
+			<label>Gender</label>
+			<span class="editable" data-se-type="radio" data-se-name="user-gender" data-se-opts='{"F":"Female","M":"Male","O":"Other","NA":"No Answer"}'>
+			
+			</span>
+			<label>Birth Date</label>
+			<span class="editable" data-se-type="datepicker" data-se-name="user-birthdate" data-se-opts='{"dateFormat":"yy-mm-dd","changeMonth":true,"changeYear":true}'>
+			
+			</span>
+			<label>Preferred Contact Method<span class="req">*</span></label>
+			<span class="editable" data-se-validation="validation[required]" data-se-type="select"
+			 data-se-name="user-preferred-contact" data-se-opts='{"":"","email":"Email","homephone":"Home Phone","cellphone":"Cell Phone","tweet":"Twitter"}'>
+			
+			</span>
+			<label>Account Balance</label>
+			<span class="editable" data-se-validation="validation[custom[integer]]" data-se-type="text" data-se-name="user-account-balance">
+			
+			</span>
+		</div>		
+		
+		<div id="controls">
+			<button id="edit-all">Edit All</button>
+		</div>
+
+		<script>
+			$(document).ready(function(){
+				$.simpleEdit({
+				    saveUrl: "server.php",
+				    editAllTrigger: "#edit-all",
+				    useValidationEngine: true,
+				    beforeFilter: function($element){
+				    	if ( $element.data("se-name") === "user-account-balance" )
+							return $element.text().replace("$","").replace(".00","");
+				    	else
+					    	return $element.text();
+				    },
+				    afterFilter: function($element, data){
+				    	if ( $element.data("se-name") === "user-account-balance" )
+							return "$" + data.newText + ".00";
+				    	else
+					    	return data.newText;
+				    }
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -630,6 +630,8 @@
 			methods[method].call();
 		} else if ( typeof method === "string" && settings[method] && value != null) {
 			settings[method] = value;
+		} else if ( typeof method === "string" && settings[method] && value == null) {
+			return settings[method];
 		} else if ( typeof method === "object" || !method ) {
 			methods.init(method);
 		} else {

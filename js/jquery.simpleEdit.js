@@ -160,12 +160,10 @@
 							else
 								resp = response;
 
-							if ( !resp.success ) {
-								mcancel();
-							} else if ( afterSave(undefined, asObj, response) !== false ) {
-								mcancel(false);
-								response = null;
-							}
+							if ( !resp.success )
+								mcancel(true);
+							else
+								mcancel(afterSave(undefined, asObj, response) !== false ? false : true);
 
 							callback();
 							localCancel();
@@ -183,7 +181,6 @@
 
 			function cancel($ce, $clone){
 				$ce.replaceWith($clone);
-				$ce = $clone = null;
 			}
 
 			function save($ce, $clone){
@@ -258,11 +255,9 @@
 								resp = response;
 
 							if ( !resp.success )
-								localCancel();
-							else if ( afterSave($clone, asObj, response) !== false )
-								localCancel(false);
-
-							response = null;
+								localCancel(true);
+							else
+								localCancel(afterSave($clone, asObj, response) !== false ? false : true);
 						});
 					} else {
 						localCancel();
@@ -624,9 +619,8 @@
 	$.simpleEdit = function simpleEdit(method, value){
 		if ( typeof method === "string" && methods[method] ) {
 			// make sure init is called once
-			if ( method !== "destroy" ) {
+			if ( method !== "destroy" )
 				methods.init();
-			}
 			methods[method].call();
 		} else if ( typeof method === "string" && settings[method] && value != null) {
 			settings[method] = value;

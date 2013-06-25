@@ -98,7 +98,8 @@ are as follows:
 
 ```JavaScript
 {
-	se-type: "text", // One of text, password, email, select, checkbox, radio, textarea, or when using jQueryUI, a datepicker.
+	se-type: "text", // One of text, password, email, select, checkbox, radio, or textarea
+                     // Pair with jQueryUI and use "datepicker" or "autocomplete".
 	se-name: "myFieldName", // The field name to save the form field as.
 	se-validation: "validation[required]", // The validation rules needed to validate this form field by the jQuery Validation Engine
 	se-opts: {"on":"Yes","off":"No"}, // The <option>s for select se-types or the additional <radio>s for radio
@@ -168,27 +169,27 @@ simpleEdit provides quite a few different options for customizing its behavior (
 	*
 	*/
 	saveUrl: window.location.href,
-	
+
 	/**
 	* A jQuery selector <span>s that simpleEdit will respond to.
 	*
 	*/
 	editClass: ".editable",
-	
+
 	/**
 	* Whether the form should initialize in editAll mode or not.
 	* editAll mode displays all editClass <span>s as editable.
 	*
 	*/
 	editAllDefault: false,
-	
+
 	/**
 	* A jQuery selector for the element (button, link, etc) that, when clicked,
 	* will cause simpleEdit to enter editAll mode.
 	*
 	*/
 	editAllTrigger: "",
-	
+
 	/**
 	* Any additional data you wish simpleEdit to send to the server when it
 	* is saving form data such as the current user ID.
@@ -200,7 +201,7 @@ simpleEdit provides quite a few different options for customizing its behavior (
 	*
 	*/
 	ajaxData: {},
-	
+
 	/**
 	* This option allows you to provide your own function to modify the data
 	* simpleEdit will send to the saveURL before it is sent.
@@ -212,7 +213,7 @@ simpleEdit provides quite a few different options for customizing its behavior (
 	*
 	*/
 	beforeSave: function beforeSave(postObj){return postObj;},
-	
+
 	/**
 	* This option allows you customize simpleEdit's behavior after
 	* a successful save.
@@ -231,7 +232,7 @@ simpleEdit provides quite a few different options for customizing its behavior (
 	*
 	*/
 	afterSave: function afterSave($element, data, response){},
-	
+
 	/**
 	* This option allows you to change, or otherwise mutate, the value
 	* of the form field that simpleEdit is retrieving after 'Save' is clicked,
@@ -244,7 +245,7 @@ simpleEdit provides quite a few different options for customizing its behavior (
 	*
 	*/
 	beforeFilter: function beforeFilter($element){return $element.text();},
-	
+
 	/**
 	* This option allows you to change, or otherwise mutate, the value
 	* of the form field that simpleEdit will save back to the <span> after
@@ -261,7 +262,7 @@ simpleEdit provides quite a few different options for customizing its behavior (
 	*
 	*/
 	afterFilter: function afterFilter($element, data){return data.newText;},
-	
+
 	/**
 	* Whether to use the validationEngine plugin or not.
 	*
@@ -270,7 +271,7 @@ simpleEdit provides quite a few different options for customizing its behavior (
 	*
 	*/
 	useValidationEngine: false,
-	
+
 	/**
 	* An object literal of the options you want simpleEdit to send to
 	* the validationEngine plugin on initialization.
@@ -280,7 +281,7 @@ simpleEdit provides quite a few different options for customizing its behavior (
 	*
 	*/
 	validationEngineOptions: {"scroll" : true},
-	
+
 	/**
 	* The class to append to <span>s with an empty value to modify
 	* the look of the placeholder text.
@@ -291,7 +292,7 @@ simpleEdit provides quite a few different options for customizing its behavior (
 	*
 	*/
 	placeholderClass: "simple-edit-placeholder",
-	
+
 	/**
 	* The placeholder text to display when a <span> contains an empty value.
 	* This also is simple instructions for how to edit the form field.

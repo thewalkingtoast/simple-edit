@@ -332,8 +332,15 @@
 					case "datepicker":
                     case "autocomplete":
 						postReplace = function(){
-                            var opts = (typeof es[2] === "object") ? es[2] : {},
-                                elem = $("#"+es[0]);
+                            var elem = $("#"+es[0]), opts;
+
+                            if (typeof es[2] === "object") {
+                                opts = es[2];
+                            } else if (typeof es[2] === "string") {
+                                opts = eval('window["' + es[2].split(".").join('"]["') + '"]');
+                            } else {
+                                opts = {};
+                            }
 
                             if (type === "datepicker") {
                                 elem.datepicker(opts);

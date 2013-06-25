@@ -206,7 +206,7 @@ You can also key further, if needed:
 is equivelant to
 
 ```JavaScript
-	$().datepicker(window.Event.settings.date);
+$().datepicker(window.Event.settings.date);
 ```
 
 ##Configuration

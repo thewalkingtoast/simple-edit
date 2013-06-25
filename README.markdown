@@ -104,6 +104,8 @@ are as follows:
 	se-validation: "validation[required]", // The validation rules needed to validate this form field by the jQuery Validation Engine
 	se-opts: {"on":"Yes","off":"No"}, // The <option>s for select se-types or the additional <radio>s for radio
 									  // in a key-value pair
+                                      // When using datapicker or autocomplete, this is the standard configuration object passed to
+                                      // those objects on initialization
 	se-ajax-data: '{"fieldID":"215315"}' // Any field-level specific data you want simpleEdit to send to saveURL in addition to the
 										 // field se-name and field value.
 }

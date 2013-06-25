@@ -1,7 +1,7 @@
 /*
- * SimpleEdit 1.04, jQuery plugin
+ * SimpleEdit 1.05, jQuery plugin
  *
- * Copyright© 2012, Adam Radabaugh
+ * Copyright© 2013, Adam Radabaugh
  *
  * Simple editing of values on basic HTML forms.
  * Licensed under the MIT License
@@ -330,7 +330,17 @@
 					case "textarea":
 						return $("<textarea>").addClass(es[3]).attr({"id":es[0],"name":es[0],"rows":3}).html(es[1]);
 					case "datepicker":
-						postReplace = function(){$("#"+es[0]).datepicker(((typeof es[2] === "object") ? es[2] : {}));};
+                    case "autocomplete":
+						postReplace = function(){
+                            var opts = (typeof es[2] === "object") ? es[2] : {},
+                                elem = $("#"+es[0]);
+
+                            if (type === "datepicker") {
+                                elem.datepicker(opts);
+                            } else if (type === "autocomplete") {
+                                elem.autocomplete(opts);
+                            }
+                        };
 						return $("<input>").addClass(es[3]).attr({"id":es[0],"name":es[0],"type":"text"}).val(es[1]);
 				}
 			}

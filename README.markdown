@@ -98,20 +98,20 @@ are as follows:
 
 ```JavaScript
 {
-	se-type: "text", 
-	se-name: "myFieldName", 
+	se-type: "text",
+	se-name: "myFieldName",
 	se-validation: "validation[required]",
-	se-opts: {"on":"Yes","off":"No"}, 
+	se-opts: {"on":"Yes","off":"No"},
 	se-ajax-data: '{"fieldID":"215315"}'
 }
 ```
 
 ###Configuration option breakdown:
-`se-type`: One of text, password, email, select, checkbox, radio, or textarea. Pair with jQueryUI and use "datepicker" or "autocomplete".
-`se-name`: The field name to save the form field as.
-`se-validation`: The validation rules needed to validate this form field by the jQuery Validation Engine.
-`se-opts`: The <option>s for select se-types or the additional <radio>s for radio in a key-value pair. When using datepicker or autocomplete, this is the standard configuration object passed to those objects on initialization or can be string to a window object. See examples below.
-`se-ajax-data`: Any field-level specific data you want simpleEdit to send to saveURL in addition to the field se-name and field value.
+- `se-type`: One of text, password, email, select, checkbox, radio, or textarea. Pair with jQueryUI and use "datepicker" or "autocomplete".
+- `se-name`: The field name to save the form field as.
+- `se-validation`: The validation rules needed to validate this form field by the jQuery Validation Engine.
+- `se-opts`: The <option>s for select se-types or the additional <radio>s for radio in a key-value pair. When using datepicker or autocomplete, this is the standard configuration object passed to those objects on initialization or can be string to a window object. See examples below.
+- `se-ajax-data`: Any field-level specific data you want simpleEdit to send to saveURL in addition to the field se-name and field value.
 
 For example, the following `<span>` markup:
 
@@ -164,13 +164,13 @@ $.simpleEdit({
 
 ##jQuery UI .datepicker() and .autocomplete()
 
-When using jQuery UI, you can set the `se-type` of a span to either "datepicker" or "autocomplete" to use these jQuery UI widgets with simpleEdit. There are two ways to configure the datepicker or autocomplete:
+When using jQuery UI, you can set the `se-type` of a span to either "datepicker" or "autocomplete" to use these jQuery UI widgets with simpleEdit. There are two ways to configure datepicker and autocomplete:
 
 ###1) Use initialization object
 
 ```HTML
 <label>Event Date</label>
-<span class="editable" data-se-type="text" data-se-name="city" data-se-opts='{"dateFormat":"yy-mm-dd","changeMonth":true,"changeYear":true}'>
+<span class="editable" data-se-type="text" data-se-name="event-date" data-se-opts='{"dateFormat":"yy-mm-dd","changeMonth":true,"changeYear":true}'>
 
 </span>
 ```
@@ -178,28 +178,28 @@ When using jQuery UI, you can set the `se-type` of a span to either "datepicker"
 is equivelant to
 
 ```JavaScript
-	$().datepicker({"dateFormat":"yy-mm-dd","changeMonth":true,"changeYear":true});
+$().datepicker({"dateFormat":"yy-mm-dd","changeMonth":true,"changeYear":true});
 ```
 
 ###2) Use `window` object via string
 
 ```HTML
 <label>Event Date</label>
-<span class="editable" data-se-type="text" data-se-name="city" data-se-opts='EventDate'>
+<span class="editable" data-se-type="text" data-se-name="event-date" data-se-opts="EventDate">
 
 </span>
 ```
 is equivelant to
 
 ```JavaScript
-	$().datepicker(window.EventDate);
+$().datepicker(window.EventDate);
 ```
 
 You can also key further, if needed:
 
 ```HTML
 <label>Event Date</label>
-<span class="editable" data-se-type="text" data-se-name="city" data-se-opts='Event.settings.date'>
+<span class="editable" data-se-type="text" data-se-name="event-date" data-se-opts="Event.settings.date">
 
 </span>
 ```

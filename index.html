@@ -14,6 +14,7 @@
 			#controls { padding: 5px; }
 			#edit-all { margin: 10px 0; }
 			#form-container { border: 2px solid #222; padding: 15px; width: 90%; }
+            #selected-color { font-size: 16px; color: #000; font-weight: bold; }
 		</style>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
@@ -27,40 +28,63 @@
 		<div id="form-container">
 			<label>Username<span class="req">*</span></label>
 			<span class="editable" data-se-validation="validation[required,custom[onlyLetterNumber]]" data-se-type="text" data-se-name="user-name">
-			
+
 			</span>
 			<label>Phone<span class="req">*</span></label>
 			<span class="editable" data-se-validation="validation[required,custom[phone]]" data-se-type="text" data-se-name="user-phone">
-			
+
 			</span>
 			<label>Biography (always returns false to demo DOM update prevention)</label>
 			<span class="editable" data-se-type="textarea" data-se-name="user-bio">
-			
+
 			</span>
 			<label>Gender</label>
 			<span class="editable" data-se-type="radio" data-se-name="user-gender" data-se-opts='{"F":"Female","M":"Male","O":"Other","NA":"No Answer"}'>
-			
+
 			</span>
 			<label>Birth Date</label>
 			<span class="editable" data-se-type="datepicker" data-se-name="user-birthdate" data-se-opts='{"dateFormat":"yy-mm-dd","changeMonth":true,"changeYear":true}'>
-			
+
 			</span>
 			<label>Preferred Contact Method<span class="req">*</span></label>
 			<span class="editable" data-se-validation="validation[required]" data-se-type="select"
 			 data-se-name="user-preferred-contact" data-se-opts='{"":"","email":"Email","homephone":"Home Phone","cellphone":"Cell Phone","tweet":"Twitter"}'>
-			
+
 			</span>
 			<label>Account Balance</label>
 			<span class="editable" data-se-validation="validation[custom[integer]]" data-se-type="text" data-se-name="user-account-balance">
-			
+
 			</span>
-		</div>		
-		
+            <label>Event Date (datepicker)</label>
+            <span class="editable" data-se-type="datepicker" data-se-name="event-date" data-se-opts='{"dateFormat":"yy-mm-dd","changeMonth":true,"changeYear":true}'>
+                2012-01-01
+            </span>
+            <label>Colors (autocomplete)</label>
+            <span class="editable" data-se-type="autocomplete" data-se-name="colors" data-se-opts="colors.configuration">
+                black
+            </span>
+            <p id="selected-color">This is some text in your selected color.</p>
+		</div>
+
 		<div id="controls">
 			<button id="edit-all">Edit All</button>
 		</div>
 
 		<script>
+            window.colors = {
+                "configuration": {
+                    "source": [
+                        "black", "blue", "white", "maroon", "silver", "gray",
+                        "red", "purple", "fuchsia", "green", "yellow", "orange"
+                    ],
+                    "minLength": 2,
+                    "select": function(event,ui){
+                        var new_color = ui.item.value.toLowerCase();
+                        $("#selected-color").css("color", new_color);
+                    }
+                }
+            };
+
 			$(document).ready(function(){
 				$.simpleEdit({
 				    saveUrl: "server.php",

@@ -1,5 +1,5 @@
 /*
- * SimpleEdit 1.05, jQuery plugin
+ * SimpleEdit 1.06, jQuery plugin
  *
  * Copyright© 2013, Adam Radabaugh
  *
@@ -284,6 +284,7 @@
 						sel = "";
 
 						$.each(es[2], function(k, v){
+							v = (v != null) ? v : "";
 							sel = ( v.toLowerCase() === es[1].toLowerCase() ) ? ' selected="selected"' : "";
 							ret.append('<option value="' + k + '"' + sel + ">" + v + "</option>");
 						});
@@ -306,6 +307,7 @@
 						ret = $("<span>").addClass("se-field-container");
 
 						$.each(es[2], function(k, v){
+							v = (v != null) ? v : "";
 							checked = (v.toLowerCase() === es[1].toLowerCase() ? true : false);
 							lobj = $("<input>")
 									.addClass(es[3])
